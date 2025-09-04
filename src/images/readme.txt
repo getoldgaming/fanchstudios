@@ -1,0 +1,1 @@
+Add your sample images here named sample-1.jpg .. sample-4.jpg. They are intentionally not included to avoid adding large binaries. You can download placeholder images from Unsplash and place them in this folder.
