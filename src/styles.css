@@ -110,6 +110,15 @@ p{max-width:var(--measure);margin:0 0 1rem;color:var(--muted);line-height:1.7}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(42vw,1fr)}
 }
 
+/* Ensure reversed parallax gallery matches sizing of first parallax */
+.parallax-section.reversed .gallery-grid{height:100%;}
+.parallax-section.reversed .gallery-grid .gitem{aspect-ratio:1/1; width:100%;}
+/* On wider screens enforce equal distribution so both parallax galleries appear identical */
+@media(min-width:901px){
+  .parallax-section.reversed .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+  .parallax-section.reversed .gallery-grid .gitem{height:100%;}
+}
+
 /* Reversed parallax section (images left, text right) */
 .parallax-section.reversed .parallax-inner{flex-direction:row}
 .parallax-section.reversed .parallax-inner .left{
