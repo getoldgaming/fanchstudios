@@ -4,13 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Fanch Studios — creative photography studio (Vue clone)" />
+  <meta name="theme-color" content="#000000" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <style>
+      /* Minimal skeleton to avoid white flash */
+      body { margin:0; background:#000; color:#fafafa; font-family: Inter, system-ui, Arial, sans-serif; }
+      #app { min-height:100vh; display:flex; align-items:center; justify-content:center; font-size:14px; letter-spacing:.5px; }
+      .app-loading { opacity:.7; animation:pulse 1.4s ease-in-out infinite; }
+      @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+    </style>
   <title>Fanch Studios — Vue Clone</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div id="app"><div class="app-loading">Loading Fanch Studios…</div></div>
+    <noscript>Please enable JavaScript to view this site.</noscript>
+  <script type="module" src="./src/main.js"></script>
   </body>
 </html>
