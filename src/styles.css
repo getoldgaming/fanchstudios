@@ -110,39 +110,15 @@ p{max-width:var(--measure);margin:0 0 1rem;color:var(--muted);line-height:1.7}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(42vw,1fr)}
 }
 
-/* Ensure reversed parallax gallery matches sizing of first parallax */
-.parallax-section.reversed .gallery-grid{height:100%;}
-.parallax-section.reversed .gallery-grid .gitem{aspect-ratio:1/1; width:100%;}
-/* On wider screens enforce equal distribution so both parallax galleries appear identical */
-@media(min-width:901px){
-  .parallax-section.reversed .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
-  .parallax-section.reversed .gallery-grid .gitem{height:100%;}
-}
-
-/* Reversed parallax section (images left, text right) */
-.parallax-section.reversed .parallax-inner{flex-direction:row}
-.parallax-section.reversed .parallax-inner .left{
-  /* images column: same inset as the original right column */
-  flex:1 1 70%;
-  padding:5%;
-  box-sizing:border-box;
-  overflow:hidden;
-}
-.parallax-section.reversed .parallax-inner .right{
-  /* text column: vertically center like the original left column */
-  flex:0 0 30%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:20px;
-  box-sizing:border-box;
-}
+/* Reversed parallax: flip order only */
+.parallax-section.reversed .parallax-inner{flex-direction:row-reverse}
 .parallax-section.reversed .parallax-bg{left:0;right:auto}
 
 @media(max-width:900px){
   .parallax-inner{flex-direction:column}
   .parallax-inner .left{flex-basis:auto;align-items:center;text-align:center}
   .parallax-inner .right{order:2}
+  .parallax-section.reversed .parallax-inner{flex-direction:column}
 }
 
 /* Why / Choose me parallax */

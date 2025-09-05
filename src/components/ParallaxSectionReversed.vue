@@ -1,18 +1,18 @@
 <template>
   <section class="parallax-section reversed" ref="sectionRef">
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
-    <div class="parallax-inner container reversed">
+    <div class="parallax-inner container">
       <div class="left">
+        <h3>Clients & Projects</h3>
+        <p>Our work spans commercial campaigns, editorial shoots, and brand partnerships. We focus on clarity, mood, and storytelling.</p>
+      </div>
+      <div class="right">
         <div class="gallery-grid">
           <div class="gitem" :style="{ backgroundImage: `url(${p5})` }" aria-hidden="true"></div>
           <div class="gitem" :style="{ backgroundImage: `url(${p6})` }" aria-hidden="true"></div>
           <div class="gitem" :style="{ backgroundImage: `url(${p7})` }" aria-hidden="true"></div>
           <div class="gitem" :style="{ backgroundImage: `url(${p8})` }" aria-hidden="true"></div>
         </div>
-      </div>
-      <div class="right">
-        <h3>Clients & Projects</h3>
-        <p>Our work spans commercial campaigns, editorial shoots, and brand partnerships. We focus on clarity, mood, and storytelling.</p>
       </div>
     </div>
   </section>
