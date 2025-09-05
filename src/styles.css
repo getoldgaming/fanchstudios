@@ -175,3 +175,46 @@ p{max-width:var(--measure);margin:0 0 1rem;color:var(--muted);line-height:1.7}
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.about-inner{flex-direction:column}.container{padding:20px}}
 @media(max-width:480px){.grid{grid-template-columns:1fr}.hero-title{font-size:28px}}
 
+/* ========================= RESPONSIVE ENHANCEMENTS ========================= */
+/* Tablet (≤1024px) */
+@media (max-width:1024px){
+  body{font-size:15px}
+  .container{padding:0 20px}
+  .hero-title{font-size:clamp(2.4rem,5vw,3rem)}
+  .price-cards{grid-template-columns:repeat(2,1fr)}
+  .parallax-section,.parallax-section.why{height:55vh}
+}
+
+/* Small tablet / large phone (≤768px) */
+@media (max-width:768px){
+  .hero{padding-top:calc(var(--nav-height) - 8px)}
+  .hero-title{font-size:clamp(2.2rem,6.2vw,2.9rem)}
+  .hero-sub{font-size:1rem}
+  .parallax-section,.parallax-section.why{height:auto;min-height:420px}
+  .parallax-inner{flex-direction:column !important;gap:32px;align-items:flex-start}
+  .parallax-inner .left,.parallax-section.reversed .parallax-inner .right{flex:0 0 auto;width:100%;padding:10px 0}
+  .parallax-inner .right{flex:0 0 auto;width:100%;padding:0 0 4px}
+  .why-cards{grid-template-columns:1fr}
+  .price-guide{padding:48px 0 64px}
+  .price-cards{grid-template-columns:1fr;gap:20px}
+}
+
+/* Mobile (≤600px) */
+@media (max-width:600px){
+  .hero-title{font-size:clamp(2rem,9vw,2.6rem)}
+  .links a{margin-left:14px;font-size:.9rem}
+  .cta .btn{margin-right:8px;padding:10px 16px;font-size:.9rem}
+  .price-cards .card{min-height:0;padding:20px}
+  .parallax-inner .left p{font-size:1rem}
+}
+
+/* Small mobile (≤400px) */
+@media (max-width:400px){
+  .brand{font-size:1rem}
+  .links a{margin-left:10px}
+  .hero-title{font-size:clamp(1.75rem,10vw,2.2rem)}
+  .parallax-inner{gap:24px}
+  .price-guide .section-title{font-size:1.35rem}
+}
+/* ========================================================================== */
+
