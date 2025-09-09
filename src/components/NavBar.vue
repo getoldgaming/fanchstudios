@@ -3,7 +3,9 @@
     <div class="container nav-inner">
   <div class="brand">Fanch Studios</div>
       <nav class="links">
-        <a href="#gallery">Work</a>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/services">Services</RouterLink>
+        <RouterLink to="/locations/cincinnati">Cincinnati</RouterLink>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>

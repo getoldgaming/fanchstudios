@@ -3,8 +3,8 @@
   <section class="hero" ref="sectionRef">
     <div class="hero-bg" v-show="visible" :style="bgStyle"></div>
     <div class="container hero-content">
-  <h1 class="hero-title">Fanch Studios — Creative Photography Studio</h1>
-      <p class="hero-sub">We craft visual stories for brands, artists, and products.</p>
+  <h1 class="hero-title">Cincinnati Photography Studio — Fanch Studios</h1>
+      <p class="hero-sub">Cincinnati, Ohio photography for brands and people: campaigns, products, portraits, and headshots.</p>
       <div class="cta">
         <button class="btn">View Work</button>
         <button class="btn ghost">Contact Us</button>

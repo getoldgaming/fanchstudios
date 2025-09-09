@@ -1,29 +1,16 @@
 <template>
   <div>
     <NavBar />
-  <Hero />
-  <ParallaxSection />
-  <ParallaxSectionReversed />
-  <ParallaxSectionWhy />
-  <PriceGuide />
-    <About />
-    <Contact />
+    <RouterView />
     <FooterBar />
   </div>
+  
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
-import Hero from './components/Hero.vue'
-import ParallaxSection from './components/ParallaxSection.vue'
-import ParallaxSectionReversed from './components/ParallaxSectionReversed.vue'
-import ParallaxSectionWhy from './components/ParallaxSectionWhy.vue'
-import PriceGuide from './components/PriceGuide.vue'
-import About from './components/About.vue'
-import Contact from './components/Contact.vue'
+// Routes render the page sections; keep only layout components here
 import FooterBar from './components/FooterBar.vue'
 
-export default {
-  components: { NavBar, Hero, ParallaxSection, ParallaxSectionReversed, ParallaxSectionWhy, PriceGuide, About, Contact, FooterBar }
-}
+export default { components: { NavBar, FooterBar } }
 </script>
