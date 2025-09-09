@@ -5,4 +5,23 @@
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
+  <url>
+    <loc>https://getoldgaming.github.io/fanchstudios/services</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://getoldgaming.github.io/fanchstudios/services/brand-photography</loc>
+  </url>
+  <url>
+    <loc>https://getoldgaming.github.io/fanchstudios/services/product-photography</loc>
+  </url>
+  <url>
+    <loc>https://getoldgaming.github.io/fanchstudios/services/portraits-headshots</loc>
+  </url>
+  <url>
+    <loc>https://getoldgaming.github.io/fanchstudios/locations</loc>
+  </url>
+  <url>
+    <loc>https://getoldgaming.github.io/fanchstudios/locations/cincinnati</loc>
+  </url>
 </urlset>
