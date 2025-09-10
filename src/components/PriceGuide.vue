@@ -1,43 +1,56 @@
 <template>
   <section class="price-guide">
     <div class="container">
-      <h2 class="section-title">Pricing Guide</h2>
-      <p class="muted">Choose a package that fits your project. Prices are starting rates and will vary by deliverables.</p>
+  <h2 class="section-title">Boudoir Pricing</h2>
+  <p class="muted">Transparent ranges; final quotes depend on sets, wardrobe, locations, and deliverables.</p>
 
       <div class="price-cards">
         <div class="card bronze">
-          <h3>Bronze</h3>
-          <div class="price">$800</div>
+          <h3>Boudoir Signature</h3>
+          <div class="price">$250–$400</div>
           <ul class="features">
-            <li>1-hour consultation</li>
-            <li>Half-day shoot</li>
-            <li>10 edited images</li>
+            <li>60–90 min, 2 outfits</li>
+            <li>10 retouched images</li>
+            <li>Private, body‑positive set</li>
           </ul>
-          <button class="btn">Book Bronze</button>
+          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Signature</RouterLink>
         </div>
 
         <div class="card silver">
-          <h3>Silver</h3>
-          <div class="price">$1,500</div>
+          <h3>Couples Deluxe</h3>
+          <div class="price">$600–$850</div>
           <ul class="features">
-            <li>Creative direction</li>
-            <li>Full-day shoot</li>
-            <li>25 edited images</li>
+            <li>2 hours, multiple looks</li>
+            <li>24 retouched images</li>
+            <li>Guided, comfortable posing</li>
           </ul>
-          <button class="btn">Book Silver</button>
+          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Couples</RouterLink>
         </div>
 
         <div class="card gold">
-          <h3>Gold</h3>
-          <div class="price">$3,000</div>
+          <h3>Bridal Heirloom</h3>
+          <div class="price">$550–$800</div>
           <ul class="features">
-            <li>Pre-production & scouting</li>
-            <li>Full-day premium shoot</li>
-            <li>50+ edited images + rights</li>
+            <li>2 hours, 3–4 outfits</li>
+            <li>20 retouched images</li>
+            <li>Album design available</li>
           </ul>
-          <button class="btn">Book Gold</button>
+          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Bridal</RouterLink>
+        </div>
+
+        <div class="card day-rate">
+          <h3>Luxury Boudoir</h3>
+          <div class="price">$700–$950</div>
+          <ul class="features">
+            <li>3–4 hours, multiple sets</li>
+            <li>30+ retouched images</li>
+            <li>Studio or in‑home</li>
+          </ul>
+          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Luxury</RouterLink>
         </div>
       </div>
+
+      <p class="muted" style="margin-top:16px">Add‑ons: professional makeup (at cost), extra retouched images ($15–$30 each), studio rental (if applicable).</p>
     </div>
   </section>
 </template>

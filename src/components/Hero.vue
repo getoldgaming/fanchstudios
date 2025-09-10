@@ -1,13 +1,12 @@
-
 <template>
   <section class="hero" ref="sectionRef">
     <div class="hero-bg" v-show="visible" :style="bgStyle"></div>
     <div class="container hero-content">
-  <h1 class="hero-title">Cincinnati Photography Studio — Fanch Studios</h1>
-      <p class="hero-sub">Cincinnati, Ohio photography for brands and people: campaigns, products, portraits, and headshots.</p>
+  <h1 class="hero-title">Cincinnati Boudoir Photography — Timeless Treasures</h1>
+      <p class="hero-sub">Elegant, empowering boudoir sessions in Cincinnati—signature, couples, and bridal.</p>
       <div class="cta">
-        <button class="btn">View Work</button>
-        <button class="btn ghost">Contact Us</button>
+        <RouterLink class="btn" :to="{ name: 'services-boudoir-experience' }">View Boudoir</RouterLink>
+        <RouterLink class="btn ghost" :to="{ name: 'home', hash: '#contact' }">Book a Session</RouterLink>
       </div>
     </div>
   </section>
@@ -15,14 +14,15 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import heroUrl from '../images/hero.jpg'
+import heroUrl from '../images-optimized/hero.jpg'
+import heroWebp from '../images-optimized/hero.webp'
 
 export default {
   setup() {
     const sectionRef = ref(null)
     const visible = ref(true)
     const bgStyle = ref({
-      backgroundImage: `url(${heroUrl})`
+      backgroundImage: `image-set(url(${heroWebp}) type('image/webp'), url(${heroUrl}) type('image/jpeg'))`
     })
 
     let observer = null

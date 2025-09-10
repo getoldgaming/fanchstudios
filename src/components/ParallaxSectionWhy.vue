@@ -3,21 +3,21 @@
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
     <div class="parallax-inner container">
       <div class="left">
-        <h3>Why Choose Me</h3>
-        <p>Clear direction, technical craft, and a collaborative approach that delivers striking imagery on brief and on time.</p>
+        <h3>Why Choose Timeless Treasures</h3>
+        <p>Gentle direction, flattering light, and a calm, body‑positive atmosphere. Your boudoir experience is private, empowering, and tailored to you.</p>
         <ul class="why-list">
-          <li><strong>Experienced:</strong> decade of commercial & editorial work</li>
-          <li><strong>Creative:</strong> story-led imagery with strong art direction</li>
-          <li><strong>Reliable:</strong> organized shoots and fast turnarounds</li>
-          <li><strong>Collaborative:</strong> partners with clients to realize vision</li>
+          <li><strong>Comfort first:</strong> guided posing and pacing at your level</li>
+          <li><strong>Privacy:</strong> your session and images stay confidential</li>
+          <li><strong>Flattering light:</strong> soft, timeless looks for every body</li>
+          <li><strong>Empowering:</strong> images that celebrate you—your way</li>
         </ul>
       </div>
       <div class="right">
         <div class="why-cards">
-          <div class="card">Custom approach</div>
-          <div class="card">High quality</div>
-          <div class="card">Fast turnarounds</div>
-          <div class="card">Clear communication</div>
+          <div class="card">Body‑positive guidance</div>
+          <div class="card">Private, respectful set</div>
+          <div class="card">Soft, flattering light</div>
+          <div class="card">Clear, caring communication</div>
         </div>
       </div>
     </div>
@@ -26,13 +26,16 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import parallaxUrl from '../images/parallax-3.jpg'
+import parallaxUrl from '../images-optimized/parallax-3.jpg'
+import parallaxWebp from '../images-optimized/parallax-3.webp'
 
 export default {
   setup() {
     const sectionRef = ref(null)
     const visible = ref(false)
-    const bgStyle = ref({ backgroundImage: `url(${parallaxUrl})` })
+    const bgStyle = ref({
+      backgroundImage: `image-set(url(${parallaxWebp}) type('image/webp'), url(${parallaxUrl}) type('image/jpeg'))`
+    })
 
     let observer = null
     onMounted(() => {

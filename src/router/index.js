@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '../pages/Home.vue'
 import Services from '../pages/services/Services.vue'
-import BrandPhotography from '../pages/services/BrandPhotography.vue'
-import ProductPhotography from '../pages/services/ProductPhotography.vue'
-import PortraitsHeadshots from '../pages/services/PortraitsHeadshots.vue'
+import BoudoirExperience from '../pages/services/BoudoirExperience.vue'
+import CouplesBoudoir from '../pages/services/CouplesBoudoir.vue'
+import BridalBoudoir from '../pages/services/BridalBoudoir.vue'
 import Locations from '../pages/locations/Locations.vue'
 import Cincinnati from '../pages/locations/Cincinnati.vue'
 
@@ -15,9 +15,9 @@ const routes = [
     name: 'services',
     component: Services,
     children: [
-      { path: 'brand-photography', name: 'services-brand', component: BrandPhotography },
-      { path: 'product-photography', name: 'services-product', component: ProductPhotography },
-      { path: 'portraits-headshots', name: 'services-portraits', component: PortraitsHeadshots },
+  { path: 'boudoir-experience', name: 'services-boudoir-experience', component: BoudoirExperience },
+  { path: 'couples-boudoir', name: 'services-couples-boudoir', component: CouplesBoudoir },
+  { path: 'bridal-boudoir', name: 'services-bridal-boudoir', component: BridalBoudoir },
     ],
   },
   { path: '/locations', name: 'locations', component: Locations },

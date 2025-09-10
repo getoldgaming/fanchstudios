@@ -1,9 +1,8 @@
 <template>
   <header :class="['nav', { scrolled }]">
     <div class="container nav-inner">
-  <div class="brand">Fanch Studios</div>
+  <RouterLink class="brand" :to="{ name: 'home' }" aria-label="Home" title="Home — Timeless Treasures">Timeless Treasures</RouterLink>
       <nav class="links">
-        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/locations/cincinnati">Cincinnati</RouterLink>
         <RouterLink :to="{ name: 'home', hash: '#about' }">About</RouterLink>

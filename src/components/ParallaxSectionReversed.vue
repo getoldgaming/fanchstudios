@@ -8,29 +8,43 @@
       </div>
       <div class="right">
         <div class="gallery-grid">
-          <div class="gitem" :style="{ backgroundImage: `url(${p5})` }" aria-hidden="true"></div>
-          <div class="gitem" :style="{ backgroundImage: `url(${p6})` }" aria-hidden="true"></div>
-          <div class="gitem" :style="{ backgroundImage: `url(${p7})` }" aria-hidden="true"></div>
-          <div class="gitem" :style="{ backgroundImage: `url(${p8})` }" aria-hidden="true"></div>
+          <div class="gitem" :style="{ backgroundImage: `image-set(url(${p5Webp}) type('image/webp'), url(${p5}) type('image/jpeg'))` }" @click="openLightbox(p5)" role="button" tabindex="0" @keydown.enter="openLightbox(p5)" aria-label="Open image" @contextmenu.prevent @dragstart.prevent></div>
+          <div class="gitem" :style="{ backgroundImage: `image-set(url(${p6Webp}) type('image/webp'), url(${p6}) type('image/jpeg'))` }" @click="openLightbox(p6)" role="button" tabindex="0" @keydown.enter="openLightbox(p6)" aria-label="Open image" @contextmenu.prevent @dragstart.prevent></div>
+          <div class="gitem" :style="{ backgroundImage: `image-set(url(${p7Webp}) type('image/webp'), url(${p7}) type('image/jpeg'))` }" @click="openLightbox(p7)" role="button" tabindex="0" @keydown.enter="openLightbox(p7)" aria-label="Open image" @contextmenu.prevent @dragstart.prevent></div>
+          <div class="gitem" :style="{ backgroundImage: `image-set(url(${p8Webp}) type('image/webp'), url(${p8}) type('image/jpeg'))` }" @click="openLightbox(p8)" role="button" tabindex="0" @keydown.enter="openLightbox(p8)" aria-label="Open image" @contextmenu.prevent @dragstart.prevent></div>
         </div>
       </div>
     </div>
+    <ImageLightbox :show="lightboxOpen" :src="lightboxSrc" @close="lightboxOpen=false" />
   </section>
 </template>
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import parallaxUrl from '../images/parallax-2.jpg'
-import p5 from '../images/p5.jpg'
-import p6 from '../images/p6.jpg'
-import p7 from '../images/p7.jpg'
-import p8 from '../images/p8.jpg'
+import ImageLightbox from './ImageLightbox.vue'
+import parallaxUrl from '../images-optimized/parallax-2.jpg'
+import parallaxWebp from '../images-optimized/parallax-2.webp'
+import p5 from '../images-optimized/p5.jpg'
+import p6 from '../images-optimized/p6.jpg'
+import p7 from '../images-optimized/p7.jpg'
+import p8 from '../images-optimized/p8.jpg'
+import p5Webp from '../images-optimized/p5.webp'
+import p6Webp from '../images-optimized/p6.webp'
+import p7Webp from '../images-optimized/p7.webp'
+import p8Webp from '../images-optimized/p8.webp'
 
 export default {
+  components: { ImageLightbox },
   setup() {
     const sectionRef = ref(null)
     const visible = ref(false)
-    const bgStyle = ref({ backgroundImage: `url(${parallaxUrl})` })
+    const lightboxOpen = ref(false)
+    const lightboxSrc = ref('')
+    const bgStyle = ref({
+      backgroundImage: `image-set(url(${parallaxWebp}) type('image/webp'), url(${parallaxUrl}) type('image/jpeg'))`
+    })
+
+    const openLightbox = (src) => { lightboxSrc.value = src; lightboxOpen.value = true }
 
     let observer = null
     onMounted(() => {
@@ -45,7 +59,7 @@ export default {
       observer = null
     })
 
-  return { sectionRef, bgStyle, visible, p5, p6, p7, p8 }
+  return { sectionRef, bgStyle, visible, p5, p6, p7, p8, p5Webp, p6Webp, p7Webp, p8Webp, lightboxOpen, lightboxSrc, openLightbox }
   }
 }
 </script>
