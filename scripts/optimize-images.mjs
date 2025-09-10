@@ -7,7 +7,8 @@ const outDir = path.resolve('src/images-optimized')
 
 const TARGET_MAX = 300 * 1024 // 300 KB
 const QUALITY_STEPS = [80, 70, 60, 50, 40]
-const WIDTH_STEPS = [1600, 1400, 1200, 1000, 2000, 2400, null]
+// Target widths to try (try 1920 first, then smaller fallbacks). `null` preserves original width.
+const WIDTH_STEPS = [1920, 1600, 1400, 1200, 1000, null]
 
 async function optimizeFile(file) {
   const ext = path.extname(file).toLowerCase()

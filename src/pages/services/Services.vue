@@ -1,5 +1,5 @@
 <template>
-  <section class="container" style="padding:48px 0">
+  <section class="container services-section">
     <h1 class="hero-title" style="font-size:2rem;margin:0 0 12px">Boudoir Services</h1>
     <p class="hero-sub">Intimate, empowering boudoir photography in Cincinnati, Ohio.</p>
     <nav style="margin:18px 0 28px">

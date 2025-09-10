@@ -2,8 +2,10 @@
   <teleport to="body">
     <div v-if="show" class="lightbox" role="dialog" aria-modal="true" @click.self="onClose" @contextmenu.prevent @mousedown.right.prevent.stop @keydown.prevent.stop="onKeydownBlock" tabindex="-1" ref="lbRoot">
       <button class="close" aria-label="Close" @click="onClose">×</button>
-      <div class="lightbox-img" :style="[bgStyle, boxStyle]" role="img" :aria-label="alt || 'Preview image'" @click.stop draggable="false"></div>
-      <div class="lb-watermark" aria-hidden="true"></div>
+      <div class="lightbox-img" :style="boxStyle" @click.stop>
+        <img :src="src" :alt="alt || 'Preview image'" :style="{width: '100%', height: '100%', display: 'block', objectFit: 'contain', pointerEvents: 'auto'}" draggable="false" />
+        <div class="lb-watermark" aria-hidden="true"></div>
+      </div>
     </div>
   </teleport>
 </template>
@@ -139,14 +141,14 @@ export default {
 <style scoped>
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:100000;overscroll-behavior:none;overflow:hidden;-webkit-touch-callout:none;user-select:none}
 /* Lightbox image box: sized via inline styles to ~85% viewport preserving aspect */
-.lightbox-img{background-size:contain;background-position:center center;background-repeat:no-repeat;box-shadow:none;border-radius:0;display:block;-webkit-user-drag:none;user-select:none;width:88vw;height:calc(var(--vh, 1vh) * 88);max-width:90vw;max-height:90svh}
+.lightbox-img{position:relative;box-shadow:none;border-radius:0;display:flex;align-items:center;justify-content:center;-webkit-user-drag:none;user-select:none;width:88vw;height:calc(var(--vh, 1vh) * 88);max-width:90vw;max-height:90svh;overflow:hidden;background:transparent}
 @supports (max-height: 90dvh){
   .lightbox-img{max-height:90dvh}
 }
 @supports (max-height: 90svh){
   .lightbox-img{max-height:90svh}
 }
-.lb-watermark{position:fixed;inset:0;pointer-events:none;z-index:100002;opacity:.06;background-image:repeating-linear-gradient(-45deg, rgba(255,255,255,.6) 0, rgba(255,255,255,.6) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 24px)}
+.lb-watermark{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2;opacity:.06;background-image:repeating-linear-gradient(-45deg, rgba(255,255,255,.6) 0, rgba(255,255,255,.6) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 24px)}
 .close{position:absolute;top:16px;right:16px;background:transparent;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer;z-index:100001}
 .close:focus{outline:2px solid #fff;outline-offset:2px}
 </style>
