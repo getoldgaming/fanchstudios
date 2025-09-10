@@ -14,10 +14,26 @@
       </div>
       <div class="right">
         <div class="why-cards">
-          <div class="card">Body‑positive guidance</div>
-          <div class="card">Private, respectful set</div>
-          <div class="card">Soft, flattering light</div>
-          <div class="card">Clear, caring communication</div>
+          <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 1 5 5v1a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5zm0 16c4.418 0 8 1.79 8 4v1H4v-1c0-2.21 3.582-4 8-4z"/></svg>
+            <h4>Comfort first</h4>
+            <p>Gentle, guided posing and pacing so you feel confident at every step.</p>
+          </div>
+          <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M12 1a3 3 0 0 0-3 3v1H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3V4a3 3 0 0 0-3-3zM9 5a3 3 0 0 1 6 0v1H9V5z"/></svg>
+            <h4>Privacy & respect</h4>
+            <p>Your session and images remain private; a safe, respectful environment is always maintained.</p>
+          </div>
+          <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M12 3l2.09 6.26L20 11l-5 3.64L16.18 21 12 17.77 7.82 21 9 14.64 4 11l5.91-.74L12 3z"/></svg>
+            <h4>Flattering light</h4>
+            <p>Soft, timeless lighting designed to flatter and celebrate your unique features.</p>
+          </div>
+          <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z"/></svg>
+            <h4>Empowering results</h4>
+            <p>Images that celebrate you—crafted with intention to boost confidence and self-expression.</p>
+          </div>
         </div>
       </div>
     </div>

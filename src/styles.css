@@ -39,14 +39,20 @@ body{
 }
 
 /* Global site loader (full viewport) */
-#site-loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:200000;color:var(--text);transition:opacity .4s ease,visibility .4s ease}
+#site-loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:200000;color:var(--text);transition:opacity .65s ease,visibility .65s ease}
 #site-loader .site-loader-inner{display:flex;flex-direction:column;align-items:center;gap:10px}
 #site-loader .logo{font-family:'Playfair Display',serif;font-size:1.6rem}
 #site-loader .loading{opacity:.8}
 #site-loader.hidden{opacity:0;visibility:hidden}
 
+/* Loader progress bar */
+.loader-bar{width:220px;height:6px;background:rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;margin-top:8px}
+.loader-fill{width:0;height:100%;background:linear-gradient(90deg,var(--accent),#cfcfcf);transform-origin:left center}
+.loader-fill.animate{animation:fillBar 1s linear forwards}
+@keyframes fillBar{to{width:100%}}
+
 /* App entry transition: start hidden and slightly shifted down; when .app-ready is added to <html> it fades in */
-html:not(.app-ready) #app{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.9,.2,1)}
+html:not(.app-ready) #app{opacity:0;transform:translateY(8px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.9,.2,1)}
 html.app-ready #app{opacity:1;transform:translateY(0)}
 
 .container{max-width:1200px;margin:0 auto;padding:0 28px}
@@ -205,13 +211,16 @@ h3{font-size:1.5rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 }
 
 /* Why / Choose me parallax */
-.parallax-section.why{height:60vh}
+.parallax-section.why{min-height:60vh}
 .parallax-section.why .parallax-inner .left{flex:0 0 30%;padding:20px;display:flex;flex-direction:column;justify-content:center}
-.parallax-section.why .parallax-inner .right{flex:1 1 70%;padding:5%;box-sizing:border-box;display:flex;align-items:center}
+.parallax-section.why .parallax-inner .right{flex:1 1 70%;padding:5%;box-sizing:border-box;display:flex;align-items:center;overflow:visible}
 .why-list{margin:18px 0 0;padding-left:18px;color:var(--muted)}
 .why-list li{margin-bottom:10px}
-.why-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%}
-.why-cards .card{background:rgba(255,255,255,0.03);padding:18px;border-radius:6px;text-align:center;color:var(--muted);font-size:1rem}
+.why-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;grid-auto-rows:auto}
+.why-cards .card{background:rgba(255,255,255,0.03);padding:22px;border-radius:8px;text-align:center;color:var(--muted);font-size:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:auto}
+.why-cards .card .card-icon{color:var(--accent);opacity:0.95;flex:0 0 auto}
+.why-cards .card h4{color:var(--accent);margin:0;font-size:1.05rem}
+.why-cards .card p{margin:8px 0 0;color:var(--muted);font-size:0.95rem;line-height:1.4;text-align:center;word-break:break-word}
 
 /* Price guide section */
 .price-guide{background:#000;padding:64px 0 80px;color:var(--muted)}

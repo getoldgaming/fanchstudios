@@ -37,6 +37,7 @@
     <div class="site-loader-inner">
       <div class="logo">Timeless Treasures</div>
       <div class="loading">Loading…</div>
+      <div class="loader-bar"><div class="loader-fill" aria-hidden="true"></div></div>
     </div>
   </div>
   <div id="app"></div>
@@ -61,20 +62,39 @@
     </script>
   <script type="module" src="./src/main.js"></script>
   <script>
-    // Ensure the initial loader always hides after 500ms
+    // Ensure the initial loader hides 300ms after the progress bar reaches 100%
     (function(){
       try{
-        const hideAfter = 500;
+        const hideAfter = 1000; // fallback duration (ms)
+        const extraAfterFill = 300; // keep loader visible this long after fill completes
         const loader = document.getElementById('site-loader');
         if (!loader) return;
-        setTimeout(()=>{
+        const fill = loader.querySelector('.loader-fill');
+        // start the progress bar animation immediately
+        if (fill) fill.classList.add('animate');
+
+        const doHide = ()=>{
           // start fade out of loader
           loader.classList.add('hidden');
           // trigger app fade/slide in
           document.documentElement.classList.add('app-ready');
           // remove loader after its fade completes
           loader.addEventListener('transitionend', ()=>{ if (loader.parentNode) loader.parentNode.removeChild(loader) }, { once: true });
-        }, hideAfter);
+        };
+
+        if (fill){
+          let handled = false;
+          // When the bar's CSS animation finishes, wait extraAfterFill then hide
+          fill.addEventListener('animationend', ()=>{
+            if (handled) return; handled = true;
+            setTimeout(doHide, extraAfterFill);
+          }, { once: true });
+          // Safety fallback: hide after (hideAfter + extraAfterFill) in case animationend doesn't fire
+          setTimeout(()=>{ if (!handled) { handled = true; doHide() } }, hideAfter + extraAfterFill + 50);
+        } else {
+          // no fill element present — fallback to original timing
+          setTimeout(doHide, hideAfter);
+        }
       }catch(e){/* noop */}
     })();
   </script>
