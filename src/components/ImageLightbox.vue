@@ -20,7 +20,7 @@ export default {
   },
   emits: ['close'],
   data() {
-  return { _onKey: null, _prevOverflow: '', _scrollY: 0, scale: 0.88, iw: 0, ih: 0, boxW: 0, boxH: 0 }
+  return { _onKey: null, _prevOverflow: '', _scrollY: 0, scale: 0.70, iw: 0, ih: 0, boxW: 0, boxH: 0 }
   },
   computed: {
     bgStyle() {

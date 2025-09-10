@@ -32,3 +32,19 @@ export default {
   components: { Hero, ParallaxSection, ParallaxSectionReversed, ParallaxSectionWhy, PriceGuide, About, Contact }
 }
 </script>
+export default {
+  components: { Hero, ParallaxSection, ParallaxSectionReversed, ParallaxSectionWhy, PriceGuide, About, Contact },
+  mounted(){
+    // Show the initial site loader for 500ms, then hide and remove it after transition
+    try{
+      const loader = document.getElementById('site-loader')
+      if (loader){
+        setTimeout(()=>{
+          loader.classList.add('hidden')
+          // remove from DOM after transition finished
+          loader.addEventListener('transitionend', ()=>{ if (loader.parentNode) loader.parentNode.removeChild(loader) }, { once: true })
+        }, 500)
+      }
+    }catch(_){}}
+  }
+}

@@ -1,7 +1,7 @@
 <template>
   <section class="parallax-section why" ref="sectionRef">
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
-    <div class="parallax-inner container">
+  <div class="parallax-inner container" :class="{ visible }">
       <div class="left">
         <h3>Why Choose Timeless Treasures</h3>
         <p>Gentle direction, flattering light, and a calm, body‑positive atmosphere. Your boudoir experience is private, empowering, and tailored to you.</p>
@@ -42,7 +42,7 @@ export default {
       if (!sectionRef.value) return
       observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { visible.value = e.isIntersecting })
-      }, { root: null, threshold: 0 })
+      }, { root: null, threshold: 0.15 })
       observer.observe(sectionRef.value)
     })
     onUnmounted(() => {

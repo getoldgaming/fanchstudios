@@ -1,7 +1,7 @@
 <template>
   <section class="parallax-section" ref="sectionRef">
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
-    <div class="parallax-inner container">
+  <div class="parallax-inner container" :class="{ visible }">
       <div class="left">
         <h3>Our Approach</h3>
         <p>We combine art direction and technical craft to create imagery that connects. Our process centers on storytelling and collaboration.</p>
@@ -54,7 +54,7 @@ export default {
         entries.forEach(e => {
           visible.value = e.isIntersecting
         })
-      }, { root: null, threshold: 0 })
+      }, { root: null, threshold: 0.15 })
       observer.observe(sectionRef.value)
     })
 

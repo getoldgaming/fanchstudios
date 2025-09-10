@@ -1,7 +1,7 @@
 <template>
   <section class="parallax-section reversed" ref="sectionRef">
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
-    <div class="parallax-inner container">
+  <div class="parallax-inner container" :class="{ visible }">
       <div class="left">
         <h3>Clients & Projects</h3>
         <p>Our work spans commercial campaigns, editorial shoots, and brand partnerships. We focus on clarity, mood, and storytelling.</p>
@@ -51,7 +51,7 @@ export default {
       if (!sectionRef.value) return
       observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { visible.value = e.isIntersecting })
-      }, { root: null, threshold: 0 })
+      }, { root: null, threshold: 0.15 })
       observer.observe(sectionRef.value)
     })
     onUnmounted(() => {

@@ -33,7 +33,13 @@
   <title>Cincinnati Boudoir Photography | Timeless Treasures</title>
   </head>
   <body>
-  <div id="app"><div class="app-loading">Loading Timeless Treasures…</div></div>
+  <div id="site-loader" aria-hidden="true">
+    <div class="site-loader-inner">
+      <div class="logo">Timeless Treasures</div>
+      <div class="loading">Loading…</div>
+    </div>
+  </div>
+  <div id="app"></div>
     <noscript>Please enable JavaScript to view this site.</noscript>
     <!-- Local SEO: Structured Data -->
     <script type="application/ld+json">
@@ -54,5 +60,23 @@
     }
     </script>
   <script type="module" src="./src/main.js"></script>
+  <script>
+    // Ensure the initial loader always hides after 500ms
+    (function(){
+      try{
+        const hideAfter = 500;
+        const loader = document.getElementById('site-loader');
+        if (!loader) return;
+        setTimeout(()=>{
+          // start fade out of loader
+          loader.classList.add('hidden');
+          // trigger app fade/slide in
+          document.documentElement.classList.add('app-ready');
+          // remove loader after its fade completes
+          loader.addEventListener('transitionend', ()=>{ if (loader.parentNode) loader.parentNode.removeChild(loader) }, { once: true });
+        }, hideAfter);
+      }catch(e){/* noop */}
+    })();
+  </script>
   </body>
 </html>
