@@ -41,22 +41,40 @@ export default {
     const lightboxOpen = ref(false)
     const lightboxSrc = ref('')
     const bgStyle = ref({
-      backgroundImage: `image-set(url(${parallaxWebp}) type('image/webp'), url(${parallaxUrl}) type('image/jpeg'))`
+      backgroundImage: `image-set(url(${parallaxWebp}) type('image/webp'), url(${parallaxUrl}) type('image/jpeg'))`,
+      transform: 'translateY(0px)'
     })
 
     const openLightbox = (src) => { lightboxSrc.value = src; lightboxOpen.value = true }
 
     let observer = null
+    let ticking = false
+    const speed = 0.18
+    const onScroll = () => {
+      if (!sectionRef.value) return
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const rect = sectionRef.value.getBoundingClientRect()
+        const offset = Math.round(rect.top * speed)
+        bgStyle.value.transform = `translateY(${offset}px)`
+        ticking = false
+      })
+    }
+
     onMounted(() => {
       if (!sectionRef.value) return
       observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { visible.value = e.isIntersecting })
       }, { root: null, threshold: 0.15 })
       observer.observe(sectionRef.value)
+      window.addEventListener('scroll', onScroll, { passive: true })
+      onScroll()
     })
     onUnmounted(() => {
       if (observer && sectionRef.value) observer.unobserve(sectionRef.value)
       observer = null
+      window.removeEventListener('scroll', onScroll)
     })
 
   return { sectionRef, bgStyle, visible, p5, p6, p7, p8, p5Webp, p6Webp, p7Webp, p8Webp, lightboxOpen, lightboxSrc, openLightbox }

@@ -42,12 +42,29 @@ export default {
     const lightboxSrc = ref('')
     const bgStyle = ref({
       backgroundImage: `image-set(url(${parallaxWebp}) type('image/webp'), url(${parallaxUrl}) type('image/jpeg'))`,
-      opacity: 1
+      opacity: 1,
+      transform: 'translateY(0px)'
     })
 
     const openLightbox = (src) => { lightboxSrc.value = src; lightboxOpen.value = true }
 
     let observer = null
+    // lightweight parallax via requestAnimationFrame
+    let ticking = false
+    const speed = 0.18 // parallax strength
+    const onScroll = () => {
+      if (!sectionRef.value) return
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const rect = sectionRef.value.getBoundingClientRect()
+        // offset based on element top: positive when scrolled up
+        const offset = Math.round(rect.top * speed)
+        bgStyle.value.transform = `translateY(${offset}px)`
+        ticking = false
+      })
+    }
+
     onMounted(() => {
       if (!sectionRef.value) return
       observer = new IntersectionObserver((entries) => {
@@ -56,11 +73,16 @@ export default {
         })
       }, { root: null, threshold: 0.15 })
       observer.observe(sectionRef.value)
+      // attach window scroll listener for parallax
+      window.addEventListener('scroll', onScroll, { passive: true })
+      // initial update
+      onScroll()
     })
 
     onUnmounted(() => {
       if (observer && sectionRef.value) observer.unobserve(sectionRef.value)
       observer = null
+      window.removeEventListener('scroll', onScroll)
     })
 
   return { sectionRef, bgStyle, visible, p1, p2, p3, p4, p1Webp, p2Webp, p3Webp, p4Webp, lightboxOpen, lightboxSrc, openLightbox }

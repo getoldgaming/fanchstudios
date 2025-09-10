@@ -22,10 +22,25 @@ export default {
     const sectionRef = ref(null)
     const visible = ref(true)
     const bgStyle = ref({
-      backgroundImage: `image-set(url(${heroWebp}) type('image/webp'), url(${heroUrl}) type('image/jpeg'))`
+      backgroundImage: `image-set(url(${heroWebp}) type('image/webp'), url(${heroUrl}) type('image/jpeg'))`,
+      transform: 'translateY(0px)'
     })
 
     let observer = null
+    let ticking = false
+    const speed = 0.12
+    const onScroll = () => {
+      if (!sectionRef.value) return
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const rect = sectionRef.value.getBoundingClientRect()
+        const offset = Math.round(rect.top * speed)
+        bgStyle.value.transform = `translateY(${offset}px)`
+        ticking = false
+      })
+    }
+
     onMounted(() => {
       if (!sectionRef.value) return
       observer = new IntersectionObserver((entries) => {
@@ -34,11 +49,14 @@ export default {
         })
       }, { root: null, threshold: 0.01 })
       observer.observe(sectionRef.value)
+      window.addEventListener('scroll', onScroll, { passive: true })
+      onScroll()
     })
 
     onUnmounted(() => {
       if (observer && sectionRef.value) observer.unobserve(sectionRef.value)
       observer = null
+      window.removeEventListener('scroll', onScroll)
     })
 
     return { sectionRef, bgStyle, visible }

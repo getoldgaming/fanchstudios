@@ -91,7 +91,7 @@ h3{font-size:1.5rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 
 /* HERO */
 .hero{position:relative;width:100%;height:100vh;max-height:100vh;display:flex;align-items:center;padding-top:var(--nav-height);overflow:hidden}
-.hero-bg{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center center;background-attachment:fixed;filter:contrast(1.02) brightness(0.92)}
+.hero-bg{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center center;background-attachment:fixed;filter:contrast(1.02) brightness(0.92);will-change:transform}
 .hero .container{position:relative;z-index:3;padding:40px;margin-top:calc(var(--nav-height) * 0.5)}
 .hero-title{font-family:'Playfair Display', serif;font-size:3.5rem;margin:0;line-height:1.02;color:var(--accent);letter-spacing:.2px}
 .hero-sub{margin:0 0 10px;color:var(--muted);font-size:1.125rem;max-width:48rem;line-height: 5rem;}
@@ -137,6 +137,7 @@ h3{font-size:1.5rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
   background-attachment:fixed; /* visually fixed but clipped to this section */
   z-index:1;
   filter:contrast(1.02) brightness(0.92);
+  will-change:transform
 }
 
 /* Dark overlay to improve text legibility on parallax sections */
