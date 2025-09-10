@@ -9,9 +9,9 @@
           <h3>Bronze</h3>
           <div class="price">$250–$400</div>
           <ul class="features">
-            <li>60–90 minutes, 1–2 outfits</li>
-            <li>10 professionally retouched images</li>
-            <li>Private studio set and guided posing</li>
+            <li>60–90 min session</li>
+            <li>2 outfits</li>
+            <li>10 retouched images</li>
           </ul>
           <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Bronze</RouterLink>
         </div>
@@ -20,9 +20,9 @@
           <h3>Silver</h3>
           <div class="price">$550–$800</div>
           <ul class="features">
-            <li>Up to 2 hours, multiple looks</li>
-            <li>20–24 retouched images</li>
-            <li>Expanded set options and styling guidance</li>
+            <li>2 hour session</li>
+            <li>Multiple looks</li>
+            <li>20 retouched images</li>
           </ul>
           <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Silver</RouterLink>
         </div>
@@ -31,14 +31,12 @@
           <h3>Gold</h3>
           <div class="price">$700–$950</div>
           <ul class="features">
-            <li>Long session (3+ hrs), multiple sets/outfits</li>
+            <li>3–4 hour session</li>
+            <li>Multiple sets and styling</li>
             <li>30+ retouched images</li>
-            <li>Album design and priority retouching</li>
           </ul>
           <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Gold</RouterLink>
         </div>
-
-        
       </div>
 
       <p class="muted" style="margin-top:16px">Add‑ons: professional makeup (at cost), extra retouched images ($15–$30 each), studio rental (if applicable).</p>
