@@ -29,6 +29,12 @@ jobs:
           VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
         run: npm run build
 
+      - name: Ensure SPA fallback (404 -> index)
+        run: |
+          if [ -f ./dist/index.html ]; then
+            cp ./dist/index.html ./dist/404.html
+          fi
+
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
