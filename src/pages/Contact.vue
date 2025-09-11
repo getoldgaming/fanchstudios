@@ -54,10 +54,16 @@
 </template>
 
 <script>
+// This page posts form data to an endpoint. By default it reads
+// the endpoint from Vite env var VITE_FORMSPREE_ENDPOINT. Example:
+// VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
+
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || ''
+
 export default {
   data() {
     return {
-  form: { name: '', email: '', message: '', package: '', service: '' },
+      form: { name: '', email: '', message: '', package: '', service: '' },
       submitting: false,
       status: ''
     }
@@ -75,26 +81,45 @@ export default {
   },
   methods: {
     async onSubmit() {
+      // simple validation
       if (!this.form.name || !this.form.email || !this.form.package || !this.form.service) {
         this.status = 'Please complete all required fields and select a package and service.'
         return
       }
 
-      // Basic email check
       if (!/.+@.+\..+/.test(this.form.email)) {
         this.status = 'Please enter a valid email.'
+        return
+      }
+
+      // Require a configured endpoint
+      if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes('your_form_id')) {
+        this.status = 'Form not configured: set VITE_FORMSPREE_ENDPOINT in your .env with your Formspree endpoint.'
         return
       }
 
       this.submitting = true
       this.status = ''
 
-  // Mock submit - replace with fetch to your backend or Netlify/Forms integration
-  await new Promise(r => setTimeout(r, 800))
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(this.form)
+        })
 
-  this.status = 'Thanks — your message was sent.'
-      this.submitting = false
-  this.form = { name: '', email: '', message: '', package: '', service: '' }
+        if (!res.ok) {
+          const text = await res.text().catch(() => res.statusText || 'error')
+          throw new Error(`Submission failed: ${text}`)
+        }
+
+        this.status = 'Thanks — your message was sent.'
+        this.form = { name: '', email: '', message: '', package: '', service: '' }
+      } catch (err) {
+        this.status = err.message || 'Submission failed — please try again later.'
+      } finally {
+        this.submitting = false
+      }
     }
   }
 }
