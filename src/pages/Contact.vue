@@ -58,7 +58,8 @@
 // the endpoint from Vite env var VITE_FORMSPREE_ENDPOINT. Example:
 // VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
 
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || ''
+// Prefer env at build-time, but allow a runtime fallback (window.FORMSPREE_ENDPOINT)
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || (typeof window !== 'undefined' && window.FORMSPREE_ENDPOINT) || ''
 
 export default {
   data() {

@@ -22,9 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Write env file for build
+        run: |
+          if [ -n "${{ secrets.VITE_FORMSPREE_ENDPOINT }}" ]; then
+            echo "VITE_FORMSPREE_ENDPOINT=${{ secrets.VITE_FORMSPREE_ENDPOINT }}" > .env.production
+          fi
+
       - name: Build
-        env:
-          VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
         run: npm run build
 
       - name: Publish to gh-pages
