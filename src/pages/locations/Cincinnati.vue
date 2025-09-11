@@ -1,7 +1,7 @@
 <template>
-  <section class="container" style="padding:48px 0">
-  <h1 class="hero-title" style="font-size:2rem;margin:0 0 12px">Cincinnati Boudoir Photography</h1>
-  <p class="hero-sub">Elegant, empowering boudoir sessions—signature, couples, and bridal—right here in Cincinnati.</p>
+  <section class="container cincinnati-page">
+  <h1 class="hero-title">Cincinnati Boudoir Photography</h1>
+  <p class="hero-sub" style="line-height:2">Elegant, empowering boudoir sessions—signature, couples, and bridal—right here in Cincinnati.</p>
 
     <div class="about" style="padding:16px 0 0">
       <p>
@@ -29,8 +29,8 @@
       <li>Eden Park and Krohn Conservatory areas for greenery and softer light</li>
     </ul>
 
-    <p style="margin-top:14px">
-  <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book a Cincinnati boudoir session</RouterLink>
+    <p style="padding:18px 0; margin:0">
+      <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book a Cincinnati boudoir session</RouterLink>
     </p>
 
     <h2 style="font-size:1.25rem;margin-top:22px">FAQs</h2>

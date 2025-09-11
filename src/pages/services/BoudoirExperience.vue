@@ -16,9 +16,9 @@
 
     <h3>Packages & pricing</h3>
     <ul>
-      <li>Signature (60–90 min, 2 outfits, 10 retouched images): $250–$400</li>
-      <li>Deluxe (2 hours, 3–4 outfits, 20 retouched images): $450–$700</li>
-      <li>Luxury (3–4 hours, multiple looks, 30+ retouched images): $700–$950</li>
+  <li>Bronze (60–90 min, 2 outfits, 10 retouched images): $250–$400</li>
+  <li>Silver (2 hours, 3–4 outfits, 20 retouched images): $450–$700</li>
+  <li>Gold (3–4 hours, multiple looks, 30+ retouched images): $700–$950</li>
     </ul>
 
     <h3>FAQs</h3>

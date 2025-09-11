@@ -16,9 +16,9 @@
 
     <h3>Packages & pricing</h3>
     <ul>
-      <li>Classic (60–90 min, 2 outfits, 12 retouched images): $300–$500</li>
-      <li>Heirloom (2 hours, 3–4 outfits, 20 retouched images): $550–$800</li>
-      <li>Album package (session + 10x10 album): from $850</li>
+  <li>Bronze (60–90 min, 2 outfits, 12 retouched images): $300–$500</li>
+  <li>Silver (2 hours, 3–4 outfits, 20 retouched images): $550–$800</li>
+  <li>Gold (Session + 10x10 album or extended session): from $850</li>
     </ul>
 
     <h3>FAQs</h3>

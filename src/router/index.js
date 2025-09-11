@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '../pages/Home.vue'
+import About from '../pages/About.vue'
 import Services from '../pages/services/Services.vue'
 import BoudoirExperience from '../pages/services/BoudoirExperience.vue'
 import CouplesBoudoir from '../pages/services/CouplesBoudoir.vue'
@@ -10,6 +11,7 @@ import Cincinnati from '../pages/locations/Cincinnati.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
+  { path: '/about', name: 'about', component: About },
   {
     path: '/services',
     name: 'services',

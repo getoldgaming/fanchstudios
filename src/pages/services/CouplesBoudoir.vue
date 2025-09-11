@@ -16,8 +16,9 @@
 
     <h3>Packages & pricing</h3>
     <ul>
-      <li>Essentials (60–90 min, 2 looks, 12 retouched images): $350–$550</li>
-      <li>Deluxe (2 hours, multiple looks, 24 retouched images): $600–$850</li>
+  <li>Bronze (60–90 min, 2 looks, 12 retouched images): $350–$550</li>
+  <li>Silver (2 hours, multiple looks, 24 retouched images): $600–$850</li>
+  <li>Gold (Extended session, multiple looks, 36+ retouched images): $900–$1,200</li>
     </ul>
 
     <h3>FAQs</h3>
