@@ -1,7 +1,7 @@
 <template>
   <section class="price-guide">
     <div class="container">
-  <h2 class="section-title">Boudoir Pricing</h2>
+  <h2 class="section-title">Package Pricing</h2>
   <p class="muted">Transparent ranges; final quotes depend on sets, wardrobe, locations, and deliverables.</p>
 
       <div class="price-cards">
@@ -13,7 +13,7 @@
             <li>2 outfits</li>
             <li>10 retouched images</li>
           </ul>
-          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Bronze</RouterLink>
+          <RouterLink class="btn" :to="{ name: 'contact', query: { package: 'Bronze' } }">Book Bronze</RouterLink>
         </div>
 
         <div class="card silver">
@@ -24,7 +24,7 @@
             <li>Multiple looks</li>
             <li>20 retouched images</li>
           </ul>
-          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Silver</RouterLink>
+          <RouterLink class="btn" :to="{ name: 'contact', query: { package: 'Silver' } }">Book Silver</RouterLink>
         </div>
 
         <div class="card gold">
@@ -35,7 +35,7 @@
             <li>Multiple sets and styling</li>
             <li>30+ retouched images</li>
           </ul>
-          <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book Gold</RouterLink>
+          <RouterLink class="btn" :to="{ name: 'contact', query: { package: 'Gold' } }">Book Gold</RouterLink>
         </div>
       </div>
 

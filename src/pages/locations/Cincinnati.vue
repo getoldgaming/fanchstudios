@@ -30,7 +30,7 @@
     </ul>
 
     <p style="padding:18px 0; margin:0">
-      <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book a Cincinnati boudoir session</RouterLink>
+      <RouterLink class="btn" :to="{ name: 'contact' }">Book a Cincinnati boudoir session</RouterLink>
     </p>
 
     <h2 style="font-size:1.25rem;margin-top:22px">FAQs</h2>

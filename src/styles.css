@@ -45,6 +45,9 @@ body{
 .service-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
 .service-buttons .btn{width:100%;display:inline-flex;justify-content:center}
 
+/* Space above the View Services CTA in the Home services block */
+.home-services .service-intro .btn { display: inline-block; margin-top: 16px }
+
 /* Fancy service button styles */
 .service-btn{
   display:flex;
@@ -257,6 +260,8 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 .price-cards .features{list-style:none;padding:0;margin:0 0 16px}
 .price-cards .features li{margin-bottom:8px}
 .price-cards .card .btn{width:100%;display:inline-block;margin-top:auto}
+/* Ensure buttons inside price cards are clickable above any nearby overlays */
+.price-cards .card .btn{position:relative;z-index:5;pointer-events:auto}
 
 @media(max-width:900px){.price-cards{grid-template-columns:1fr}} 
 

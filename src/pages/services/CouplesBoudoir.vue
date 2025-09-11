@@ -31,8 +31,8 @@
       <p>No. Your comfort sets the tone. Sessions can be implied, fully clothed, or artistic nudes—always with consent.</p>
     </details>
 
-    <p style="margin-top:14px">
-      <RouterLink class="btn" :to="{ name: 'home', hash: '#contact' }">Book couples boudoir</RouterLink>
+    <p class="actions">
+      <RouterLink class="btn" :to="{ name: 'contact', query: { service: 'Couples Boudoir' } }">Book couples boudoir</RouterLink>
     </p>
   </article>
 </template>
@@ -40,3 +40,10 @@
 <script>
 export default {}
 </script>
+
+<style scoped>
+h2 { font-size:1.6rem; margin-bottom:0.5rem }
+h3 { font-size:1rem; margin-top:1rem; color:var(--muted) }
+article p, article ul { color:var(--muted); line-height:1.6 }
+ .actions { margin-top:1.25rem }
+</style>

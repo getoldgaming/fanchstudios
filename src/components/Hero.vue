@@ -5,8 +5,8 @@
   <h1 class="hero-title">Cincinnati Boudoir Photography — Timeless Treasures</h1>
       <p class="hero-sub">Elegant, empowering boudoir sessions in Cincinnati—signature, couples, and bridal.</p>
       <div class="cta">
-        <RouterLink class="btn" :to="{ name: 'services-boudoir-experience' }">View Boudoir</RouterLink>
-        <RouterLink class="btn ghost" :to="{ name: 'home', hash: '#contact' }">Book a Session</RouterLink>
+  <RouterLink class="btn" :to="{ name: 'services-boudoir-experience' }">View Services</RouterLink>
+  <RouterLink class="btn ghost" :to="{ name: 'contact' }">Book a Session</RouterLink>
       </div>
     </div>
   </section>

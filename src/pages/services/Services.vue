@@ -1,7 +1,7 @@
 <template>
   <section class="container services-hero">
-    <h1 class="hero-title">Boudoir Services</h1>
-    <p class="hero-sub">Intimate, empowering boudoir photography in Cincinnati, Ohio.</p>
+  <h1 class="hero-title">Services</h1>
+  <p class="hero-sub">Intimate, empowering photography in Cincinnati, Ohio.</p>
     <nav class="services-nav">
       <button class="btn service-btn" @click="setActive('boudoir')">
         <span class="service-label">Boudoir Experience</span>

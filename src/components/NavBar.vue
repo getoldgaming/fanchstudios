@@ -6,7 +6,7 @@
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/locations/cincinnati">Cincinnati</RouterLink>
   <RouterLink :to="{ name: 'about' }">About</RouterLink>
-        <RouterLink :to="{ name: 'home', hash: '#contact' }">Contact</RouterLink>
+  <RouterLink :to="{ name: 'contact' }">Contact</RouterLink>
       </nav>
     </div>
   </header>
