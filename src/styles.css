@@ -175,6 +175,9 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 .parallax-inner .left p{font-size:1.05rem;line-height:1.7;color:var(--muted)}
 .parallax-inner .right{flex:1 1 70%;background:transparent}
 
+/* Ensure parallax text is visible by default (fallback if JS/CSS toggles removed) */
+.parallax-inner .left{opacity:1 !important;transform:none !important}
+
 /* Add padding inside the right column so the 2x2 gallery is inset by 5% */
 .parallax-inner .right{box-sizing:border-box}
 .parallax-inner{display:flex;gap:24px;align-items:stretch}
@@ -186,12 +189,21 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 
 /* Parallax gallery grid */
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:100%;}
-.gallery-grid .gitem{position:relative;background-size:cover;background-position:center;border-radius:8px;min-height:0;transition:transform .25s ease;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none}
-.gallery-grid .gitem:hover{transform:scale(1.03)}
+.gallery-grid .gitem{position:relative;background-size:cover;background-position:center;border-radius:8px;min-height:0;transform:translateY(22px);opacity:0;transition:transform 750ms cubic-bezier(.2,.9,.25,1), opacity 750ms ease;will-change:transform;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none}
+.gallery-grid .gitem:hover{transform:translateY(0) scale(1.03)}
 /* Subtle diagonal watermark overlay on tiles */
 
 
 /* Maintain square items on narrower screens; keep 2 columns until very small */
+/* When the parallax section enters view, slide gallery items up (only affects .gitem) */
+.gallery-grid .gitem.revealed{transform:translateY(0);opacity:1}
+
+/* Stagger reveal for visual polish (per-item delays) */
+.gallery-grid .gitem.revealed:nth-child(1){transition-delay:90ms}
+.gallery-grid .gitem.revealed:nth-child(2){transition-delay:180ms}
+.gallery-grid .gitem.revealed:nth-child(3){transition-delay:270ms}
+.gallery-grid .gitem.revealed:nth-child(4){transition-delay:360ms}
+
 @media(max-width:900px){
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:minmax(120px,1fr);height:auto}
   .gallery-grid .gitem{aspect-ratio:1/1}

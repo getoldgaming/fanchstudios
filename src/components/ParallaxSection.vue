@@ -1,5 +1,5 @@
 <template>
-  <section class="parallax-section" ref="sectionRef">
+  <section :class="['parallax-section', { 'in-view': visible }]" ref="sectionRef">
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
     <div class="parallax-inner container">
       <div class="left">
@@ -50,12 +50,23 @@ export default {
     let observer = null
     onMounted(() => {
       if (!sectionRef.value) return
+      // observe the section for background visibility
       observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          visible.value = e.isIntersecting
-        })
+        entries.forEach(e => { visible.value = e.isIntersecting })
       }, { root: null, threshold: 0 })
       observer.observe(sectionRef.value)
+
+      // observe each gallery item to reveal individually when 35% visible
+      const items = sectionRef.value.querySelectorAll('.gitem')
+      const itemObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => {
+          if (en.intersectionRatio >= 0.35) {
+            en.target.classList.add('revealed')
+            obs.unobserve(en.target)
+          }
+        })
+      }, { root: null, threshold: [0, 0.35, 1] })
+      items.forEach(i => itemObserver.observe(i))
     })
 
     onUnmounted(() => {
