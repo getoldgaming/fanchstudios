@@ -74,12 +74,15 @@ body{
   .service-btn .service-price{margin-top:4px}
 }
 
-/* Services hero section: center text and buttons, equal top/bottom padding */
-.services-hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0}
+/* Services hero section: align like other pages (not vertically centered) */
+.services-hero{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:84px 0 48px}
 .services-hero .hero-title{font-size:2rem;margin:0 0 12px}
 .services-hero .hero-sub{max-width:48rem;text-align:center;margin:0 0 18px}
 .services-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
 .services-nav .btn{width:100%;display:inline-flex;justify-content:center}
+
+/* Ensure Services details align below fixed nav on larger screens too */
+.service-detail{ scroll-margin-top: calc(var(--nav-height) + 6px) }
 
 /* Accessible focus outlines */
 a:focus-visible, button:focus-visible {outline:2px solid var(--accent);outline-offset:3px}
@@ -98,6 +101,9 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 .links a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:600;transition:color .18s ease;font-size:1rem;padding:6px 4px}
 .links a:hover{color:var(--accent)}
 
+/* Ensure mobile panel is hidden by default (desktop) */
+.mobile-panel{display:none}
+
 /* Ensure brand link never turns purple (visited) */
 .nav .brand,
 .nav .brand:link,
@@ -112,11 +118,55 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 /* Hide nav when lightbox is open */
 .lightbox-open .nav{opacity:0 !important;transform:translateY(-8px) !important;pointer-events:none !important}
 
+/* Small-screen burger + stacking behavior (brand stays visible above menu) */
+.burger{display:none;background:transparent;border:0;padding:6px;margin-left:12px}
+.burger-box{display:inline-block;width:28px;height:18px;position:relative}
+.burger-inner, .burger-inner::before, .burger-inner::after{display:block;background:var(--muted);height:2px;border-radius:2px;position:absolute;left:0;right:0;transition:transform .18s ease, opacity .18s ease}
+.burger-inner{top:50%;transform:translateY(-50%)}
+.burger-inner::before{content:'';top:-8px}
+.burger-inner::after{content:'';top:8px}
+.burger-inner.open{background:transparent}
+.burger-inner.open::before{transform:translateY(8px) rotate(45deg)}
+.burger-inner.open::after{transform:translateY(-8px) rotate(-45deg)}
+
+/* Mobile-specific: center brand, show burger under brand, menu beneath */
+@media (max-width:768px){
+  /* keep header compact on mobile; panel will handle nav */
+  .nav{height:var(--nav-height);padding:0}
+  .nav-inner{flex-direction:row;align-items:center;gap:8px}
+  .brand{position:relative;z-index:120;margin-top:0;font-size:1.4rem;text-align:left}
+  .burger{display:inline-flex;position:relative;z-index:130;margin-top:0}
+  /* hide burger when panel is open */
+  .menu-open .burger{visibility:hidden;opacity:0;pointer-events:none}
+  /* hide desktop links in header on mobile */
+  .links{display:none !important}
+
+  /* Full-screen slide-in panel that fades from transparent to black */
+  .mobile-panel{display:flex;position:fixed;top:0;right:0;width:100vw;height:100vh;transform:translateX(100%);background:rgba(0,0,0,0);transition:transform .7s cubic-bezier(.2,.8,.2,1), background .7s ease;z-index:120;flex-direction:column;padding:20px;box-sizing:border-box}
+  .mobile-panel.open{transform:translateX(0);background:rgba(0,0,0,1)}
+  .mobile-header{display:none}
+  .mobile-brand{display:inline-flex}
+  .mobile-brand img{height:40px;width:auto;display:block}
+  .mobile-close{position:absolute;top:8px;right:8px;background:transparent;border:0;color:#fff;font-size:2rem;line-height:1;padding:8px;cursor:pointer}
+  .mobile-links{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+  .mobile-links a{color:#fff;text-decoration:none;font-weight:700;font-size:1.15rem;padding:14px 16px}
+  .mobile-links a:hover{color:#f3f3f3}
+  /* lock body scroll when panel open */
+  .menu-open{height:100vh;overflow:hidden;position:relative}
+  .menu-open body{overflow:hidden}
+  
+  /* Make hero subtitle denser on small screens so wrapped lines are closer together */
+  .hero-sub{line-height:1.25rem; margin-bottom:4px}
+}
+
+
 /* HERO */
 .hero{position:relative;width:100%;height:100vh;max-height:100vh;display:flex;align-items:center;padding-top:var(--nav-height);overflow:hidden}
 .hero-bg{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center center;background-attachment:fixed;filter:contrast(1.02) brightness(0.92)}
 .hero .container{position:relative;z-index:3;padding:40px;margin-top:calc(var(--nav-height) * 0.5)}
 .hero-title{font-family:'Playfair Display', serif;font-size:3.5rem;margin:0;line-height:1.08;color:var(--accent);letter-spacing:.2px}
+.hero-title-top,.hero-title-bottom{display:inline}
+.hero-title-sep{display:inline-block;margin:0 0.5rem}
 .hero-sub{margin:0 0 10px;color:var(--muted);font-size:1.125rem;max-width:48rem;line-height: 5rem;}
 .cta{margin-top:18px}
 .btn{background:var(--accent);color:#000;border:0;padding:12px 20px;margin-right:12px;cursor:pointer;font-weight:700;border-radius:6px;transition:transform .14s ease, box-shadow .14s ease;font-size:1rem}
@@ -204,46 +254,37 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 .gallery-grid .gitem.revealed:nth-child(3){transition-delay:270ms}
 .gallery-grid .gitem.revealed:nth-child(4){transition-delay:360ms}
 
-@media(max-width:900px){
-  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:minmax(120px,1fr);height:auto}
-  .gallery-grid .gitem{aspect-ratio:1/1}
-}
-@media(max-width:600px){
-  .gallery-grid{grid-auto-rows:minmax(34vw,1fr)} /* approx square using viewport width */
-}
-@media(max-width:420px){
-  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(42vw,1fr)}
-}
+/* gallery-grid responsive rules consolidated further down */
 
 /* Reversed parallax: flip order only */
 .parallax-section.reversed .parallax-inner{flex-direction:row-reverse}
 .parallax-section.reversed .parallax-inner .left{align-items:flex-start;text-align:left}
 .parallax-section.reversed .parallax-bg{left:0;right:auto}
 
-@media(max-width:900px){
-  .parallax-inner{flex-direction:column}
-  .parallax-inner .left{flex-basis:auto;align-items:center;text-align:center}
-  .parallax-inner .right{order:2}
-  .parallax-section.reversed .parallax-inner{flex-direction:column}
-}
+/* parallax-inner responsive rules consolidated further down */
 
-@media(max-width:900px){
-  .services-nav{grid-template-columns:repeat(2,1fr)}
-}
 @media(max-width:520px){
   .services-nav{grid-template-columns:1fr}
-}
-@media(max-width:900px){
-  .service-buttons{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:520px){
   .service-buttons{grid-template-columns:1fr}
 }
 
 /* Cincinnati page spacing */
 .cincinnati-page{padding:84px 0 48px}
 .cincinnati-page .hero-title{font-size:2rem;margin:0 0 12px}
+/* Match Services page horizontal centering and subtitle styling */
+.cincinnati-page{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.cincinnati-page .hero-sub{max-width:48rem;text-align:center;margin:0 0 18px}
 @media(max-width:768px){.cincinnati-page{padding:64px 0 36px}}
+
+/* Match non-hero page H1 sizes */
+.about-page .hero-title{font-size:2rem;margin:0 0 12px}
+.contact-page .hero-title{font-size:2rem;margin:0 0 12px}
+/* Contact page layout to match Services */
+.contact-page{padding:84px 0 48px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.contact-page .lead{max-width:48rem;text-align:center;margin:0 0 18px}
+/* About page layout to match Services */
+.about-page{padding:84px 0 48px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.about-page .hero-sub{max-width:48rem;text-align:center;margin:0 0 18px;line-height:2}
 
 /* Why / Choose me parallax */
 .parallax-section.why{height:60vh}
@@ -275,7 +316,7 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 /* Ensure buttons inside price cards are clickable above any nearby overlays */
 .price-cards .card .btn{position:relative;z-index:5;pointer-events:auto}
 
-@media(max-width:900px){.price-cards{grid-template-columns:1fr}} 
+/* price-cards responsive rule consolidated further down */
 
 
 /* ABOUT */
@@ -315,35 +356,174 @@ h3{font-size:2rem;line-height:1.2;margin:0 0 .75rem;font-weight:700}
 
 /* Small tablet / large phone (≤768px) */
 @media (max-width:768px){
+  /* Ensure Services details land below fixed navbar when opened */
+  .service-detail{ scroll-margin-top: calc(var(--nav-height) + 12px) }
+  /* Prevent page headers from overlapping under fixed nav on mobile */
+  .about-page,
+  .contact-page,
+  .cincinnati-page,
+  .services-hero{
+    padding-top: calc(var(--nav-height) + 12px) !important;
+  }
+  /* Ensure header and page text are centered on small tablets/phones */
+  .nav-inner{flex-direction:column;align-items:center;justify-content:center}
+  .brand{margin:8px auto 0;text-align:center}
+  .burger{margin:4px auto 0}
+  .links{align-items:center}
+  .links a{text-align:center}
+
   .hero{padding-top:calc(var(--nav-height) - 8px)}
-  .hero-title{font-size:clamp(2.2rem,6.2vw,2.9rem)}
-  .hero-sub{font-size:1rem}
+  .hero-title{font-size:clamp(2.2rem,6.2vw,2.9rem);text-align:center}
+  /* Stack hero title parts on mobile only so hyphen is on its own line */
+  .hero-title-top,.hero-title-sep,.hero-title-bottom{display:block}
+  .hero-title-sep{margin:6px 0;color:var(--muted);line-height:1}
+  .hero-sub{font-size:1rem; line-height:1.2rem; margin:20px 0 20px;text-align:center}
+  /* Stack CTA buttons vertically on tablets/phones */
+  .cta{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:18px}
+  /* Slightly narrower buttons and centered text for better balance on mobile */
+  .cta .btn{display:inline-block;width:78%;max-width:360px;margin-right:0;padding:12px 18px;text-align:center}
+  .cta .btn.ghost{padding:12px 18px}
   .parallax-section,.parallax-section.why{height:auto;min-height:420px}
+  /* Make home services match parallax vertical rhythm on mobile */
+  .home-services{padding:48px 0}
   .parallax-inner{flex-direction:column !important;gap:32px;align-items:flex-start}
-  .parallax-inner .left,.parallax-section.reversed .parallax-inner .right{flex:0 0 auto;width:100%;padding:10px 0}
+  /* Center About section text and stack its columns on small screens */
+  .about{ text-align: center }
+  .about-inner{ flex-direction:column; align-items:center }
+  /* Center Contact block on small screens */
+  .contact{ text-align: center }
+  .contact .container, .contact-inner { display:flex; flex-direction:column; align-items:center }
+  /* Give parallax sections equal top/bottom padding on mobile for consistent spacing */
+  .parallax-section,
+  .parallax-section.why{
+    padding:48px 0;
+    box-sizing:border-box;
+  }
+  /* Reduce inner padding so content breathes without overflowing */
+  .parallax-inner{padding:32px 0}
+  .parallax-inner{ /* center children so headings/text align centrally on mobile */
+    padding:32px 0;
+    align-items:center;
+  }
+  .parallax-inner .left,
+  .parallax-section.reversed .parallax-inner .right{
+    flex:0 0 auto;width:100%;padding:10px 0;align-items:center;text-align:center
+  }
+  .parallax-inner .left h3,
+  .parallax-inner .left p{ text-align:center }
   .parallax-inner .right{flex:0 0 auto;width:100%;padding:0 0 4px}
   .why-cards{grid-template-columns:1fr}
   .price-guide{padding:48px 0 64px}
   .price-cards{grid-template-columns:1fr;gap:20px}
+
+  /* Services page: center all button text on mobile */
+  .services-nav .btn{
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  }
+  .service-btn{
+    align-items:center;    /* center content within fancy service buttons */
+    text-align:center;     /* center text for labels/prices */
+  }
+  .service-btn .service-label,
+  .service-btn .service-price{
+    width:100%;
+    text-align:center;
+  }
+
+  /* Cincinnati page: center the CTA button and constrain width on mobile */
+  .cincinnati-page .btn{
+    display:block;
+    width:78%;
+    max-width:360px;
+    margin:12px auto 0;
+    padding:12px 18px;
+    text-align:center;
+    white-space:normal;
+  }
 }
 
 /* Mobile (≤600px) */
 @media (max-width:600px){
-  .hero-title{font-size:clamp(2rem,9vw,2.6rem)}
+  /* slightly reduced hero title for better fit on small phones */
+  .hero-title{font-size:clamp(1.8rem,8.5vw,2.4rem)}
   .links a{margin-left:14px;font-size:.9rem}
   .cta .btn{margin-right:8px;padding:10px 16px;font-size:.9rem}
-  .price-cards .card{min-height:0;padding:20px}
+  /* Ensure price cards grow to contain their CTA on small screens */
+  .price-cards .card{
+    min-height:340px; /* reduce vertical height but leave room for CTA */
+    padding:12px; /* smaller top/bottom padding to tighten spacing */
+    box-sizing:border-box;
+    overflow:hidden; /* keep visual contents clipped to the card bounds */
+    display:flex;
+    flex-direction:column;
+    justify-content:center; /* vertically center content */
+    align-items:center; /* horizontally center content */
+  }
+  .price-cards .card .btn{
+    position:static !important; /* ensure button participates in normal flow */
+    margin-top:12px; /* small gap from content above */
+    z-index:2;
+    align-self:center; /* center button rather than stretching full width */
+    width:auto;
+    max-width:260px; /* prevent buttons from becoming too wide on narrow screens */
+  }
   .parallax-inner .left p{font-size:1rem}
+  /* Tighter vertical rhythm on smaller phones */
+  .parallax-section,
+  .parallax-section.why{padding:32px 0}
+  .home-services{padding:32px 0}
+  .parallax-inner{padding:20px 0}
+
+  /* Stack parallax gallery items into a single column for mobile */
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:auto;height:auto}
+  .gallery-grid .gitem{aspect-ratio:auto;min-height:140px}
 }
 
 /* Small mobile (≤400px) */
   .why-cards .card{min-height:auto;padding:18px}
 @media (max-width:400px){
-  .brand{font-size:1rem}
+  .brand{font-size:1.15rem}
   .links a{margin-left:10px}
-  .hero-title{font-size:clamp(1.75rem,10vw,2.2rem)}
+  /* a touch smaller on the smallest screens */
+  .hero-title{font-size:clamp(1.6rem,9.5vw,2rem)}
   .parallax-inner{gap:24px}
   .price-guide .section-title{font-size:1.35rem}
+  /* Smallest screens: keep padding compact */
+  .parallax-section,
+  .parallax-section.why{padding:20px 0}
+  .home-services{padding:20px 0}
+  .parallax-inner{padding:12px 0}
 }
 /* ========================================================================== */
+
+/* End of responsive rules */
+
+/* Consolidated: medium breakpoint tweaks (≤900px) */
+@media (max-width:900px){
+  /* parallax inner stacking */
+  .parallax-inner{flex-direction:column}
+  .parallax-inner .left{flex-basis:auto;align-items:center;text-align:center}
+  .parallax-inner .right{order:2}
+  .parallax-section.reversed .parallax-inner{flex-direction:column}
+
+  /* services and buttons adjustments */
+  .services-nav{grid-template-columns:repeat(2,1fr)}
+  .service-buttons{grid-template-columns:repeat(2,1fr)}
+
+  /* price cards become single column */
+  .price-cards{grid-template-columns:1fr}
+}
+
+/* Gallery grid sizing for medium screens (601px - 900px) */
+@media (min-width:601px) and (max-width:900px){
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:minmax(120px,1fr);height:auto}
+  .gallery-grid .gitem{aspect-ratio:1/1}
+}
+
+/* small adjustments for very narrow screens */
+@media (max-width:420px){
+  .gallery-grid .gitem{min-height:120px}
+}
 

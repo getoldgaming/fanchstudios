@@ -1,5 +1,5 @@
 <template>
-  <section class="container contact-page" style="padding:48px 0">
+  <section class="container contact-page">
     <h1 class="hero-title">Contact</h1>
     <p class="lead">Fill out the form below and I'll get back to you within 48 hours.</p>
 
@@ -128,9 +128,12 @@ export default {
 
 <style scoped>
 .contact-page .lead { max-width: 60ch; margin-bottom: 1rem }
-.contact-form { display:flex; flex-direction:column; gap:12px; max-width:720px }
-.contact-form label { display:flex; flex-direction:column; gap:8px }
-.contact-form input, .contact-form textarea, .contact-form select { padding:8px 10px; border:1px solid #ddd; border-radius:6px }
+.contact-form { display:flex; flex-direction:column; gap:12px; width:100%; max-width:960px; margin:0 auto; align-items:center }
+.contact-form label { display:flex; flex-direction:column; gap:8px; width:75% }
+.contact-form input, .contact-form textarea, .contact-form select { width:100%; padding:8px 10px; border:1px solid #ddd; border-radius:6px }
 .form-actions { margin-top:8px }
 .form-status { margin-top:8px; color:var(--accent) }
+@media (max-width: 600px) {
+  .contact-form label { width:100% }
+}
 </style>
