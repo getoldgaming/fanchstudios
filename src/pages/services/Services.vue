@@ -2,6 +2,8 @@
   <section class="container services-hero">
   <h1 class="hero-title">Photography Services</h1>
   <p class="hero-sub">Intimate, empowering photography in Cincinnati, Ohio.</p>
+  <p class="lead intro">Choose a service below to view details, packages, and FAQs. You can switch anytime.</p>
+    <h2 class="section-title">Explore services</h2>
     <nav class="services-nav">
       <button class="btn service-btn" @click="setActive('boudoir')">
         <span class="service-label">Boudoir Experience</span>
@@ -73,3 +75,8 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.intro{max-width:48rem;margin:6px auto 8px;text-align:center;color:var(--muted)}
+.section-title{color:var(--accent);margin:10px 0 10px;font-family:'Playfair Display', serif;font-size:1.35rem;text-align:center}
+</style>

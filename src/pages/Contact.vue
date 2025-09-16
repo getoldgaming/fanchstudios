@@ -127,12 +127,20 @@ export default {
 </script>
 
 <style scoped>
-.contact-page .lead { max-width: 60ch; margin-bottom: 1rem }
+.contact-page .lead { max-width: 60ch; margin: 0 auto 1rem; text-align:center }
+.contact-info{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:960px;margin:0 auto 16px;align-items:start}
+.contact-info h3{margin:0 0 6px;color:var(--accent);font-family:'Playfair Display', serif;font-size:1.1rem}
+.contact-info a{color:var(--accent);text-decoration:underline}
+.contact-info p{margin:0;color:var(--muted)}
+
 .contact-form { display:flex; flex-direction:column; gap:12px; width:100%; max-width:960px; margin:0 auto; align-items:center }
 .contact-form label { display:flex; flex-direction:column; gap:8px; width:75% }
 .contact-form input, .contact-form textarea, .contact-form select { width:100%; padding:8px 10px; border:1px solid #ddd; border-radius:6px }
 .form-actions { margin-top:8px }
 .form-status { margin-top:8px; color:var(--accent) }
+@media (max-width: 768px) {
+  .contact-info{grid-template-columns:1fr; text-align:center}
+}
 @media (max-width: 600px) {
   .contact-form label { width:100% }
 }
