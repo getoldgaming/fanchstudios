@@ -1,4 +1,4 @@
-name: Build and Deploy to gh-pages (peaceiris)
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -8,30 +8,24 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19.0'
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Check Formspree secret
-        run: |
-          if [ -z "${{ secrets.VITE_FORMSPREE_ENDPOINT }}" ]; then
-            echo "ERROR: VITE_FORMSPREE_ENDPOINT secret is not set for this run." >&2
-            exit 1
-          else
-            echo "VITE_FORMSPREE_ENDPOINT is present (masked)."
-          fi
-
-      - name: Write env file for build
+      - name: Write env file for build (optional)
         run: |
           if [ -n "${{ secrets.VITE_FORMSPREE_ENDPOINT }}" ]; then
             echo "VITE_FORMSPREE_ENDPOINT=${{ secrets.VITE_FORMSPREE_ENDPOINT }}" > .env.production
@@ -40,10 +34,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Publish to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
-          # keep_history: true
+          cname: timelesstouch-boudoir.com
