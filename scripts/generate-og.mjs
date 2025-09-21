@@ -32,7 +32,7 @@ const bgSvg = `
   </g>
   <!-- Brand title and subtitle -->
   <g>
-    <text x='320' y='220' font-family='Playfair Display, Georgia, serif' font-weight='700' font-size='66' fill='#faf6e8'>Timeless Treasures</text>
+  <text x='320' y='220' font-family='Playfair Display, Georgia, serif' font-weight='700' font-size='66' fill='#faf6e8'>Timeless Touch Boudoir</text>
     <text x='320' y='270' font-family='Inter, Arial, sans-serif' font-weight='500' font-size='28' fill='#d7d3c4' opacity='.9'>Cincinnati Boudoir Photography</text>
   </g>
 </svg>

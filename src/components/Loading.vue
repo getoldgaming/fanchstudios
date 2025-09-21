@@ -1,7 +1,7 @@
 <template>
   <div class="loading-overlay" :class="{ 'fade-out': fading }" v-show="visible" role="status" aria-live="polite">
     <div class="loading-inner">
-      <h1 class="loading-title">Welcome to Timeless Treasures</h1>
+  <h1 class="loading-title">Welcome to Timeless Touch Boudoir</h1>
       <div class="loading-bar" aria-hidden="true">
         <div class="loading-progress" :style="{ width: progress + '%' }"></div>
       </div>

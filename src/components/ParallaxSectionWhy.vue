@@ -3,7 +3,7 @@
     <div class="parallax-bg" v-show="visible" :style="bgStyle" aria-hidden="true"></div>
     <div class="parallax-inner container">
       <div class="left">
-        <h3>Why Choose Timeless Treasures</h3>
+  <h3>Why Choose Timeless Touch Boudoir</h3>
         <p>Gentle direction, flattering light, and a calm, body‑positive atmosphere. Your boudoir experience is private, empowering, and tailored to you.</p>
         <ul class="why-list">
           <li><strong>Comfort first:</strong> guided posing and pacing at your level</li>

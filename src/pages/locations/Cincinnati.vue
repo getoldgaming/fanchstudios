@@ -12,7 +12,7 @@
     <!-- Overview -->
     <div class="intro">
       <p>
-        Timeless Treasures serves the Cincinnati metro—Over‑the‑Rhine, Downtown, Walnut Hills, Covington/Newport, and
+        Timeless Touch Boudoir serves the Cincinnati metro—Over‑the‑Rhine, Downtown, Walnut Hills, Covington/Newport, and
         surrounding neighborhoods. I create soft, flattering boudoir imagery with natural posing, intentional light, and
         a calm, body‑positive approach.
       </p>

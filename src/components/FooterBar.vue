@@ -3,15 +3,15 @@
     <div class="container footer-inner">
       <div class="footer-col">
         <h3>Copyright</h3>
-        <div class="copyright">© {{ new Date().getFullYear() }} Timeless Treasures</div>
+  <div class="copyright">© {{ new Date().getFullYear() }} Timeless Touch Boudoir</div>
       </div>
       <div class="footer-col">
         <h3>Service Area</h3>
         <div class="address">Cincinnati & Tri‑State Area<br/>Greater Cincinnati • Northern Kentucky • Southeast Indiana</div>
       </div>
       <div class="footer-col">
-        <h3>Email</h3>
-        <div class="email"><a href="mailto:hello@timelesstreasures.com">hello@timelesstreasures.com</a></div>
+  <h3>Email</h3>
+  <div class="email"><a href="mailto:timelesstouchboudoir@gmail.com">timelesstouchboudoir@gmail.com</a></div>
       </div>
     </div>
   </footer>

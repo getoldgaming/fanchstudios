@@ -2,8 +2,8 @@
   <section id="about" class="about">
     <div class="container about-inner">
       <div>
-  <h2>About Timeless Treasures</h2>
-  <p>Timeless Treasures is a Cincinnati boudoir studio. I create elegant, affirming portraits with gentle direction and flattering light—always private and body‑positive.</p>
+  <h2>About Timeless Touch Boudoir</h2>
+  <p>Timeless Touch Boudoir is a Cincinnati boudoir studio. I create elegant, affirming portraits with gentle direction and flattering light—always private and body‑positive.</p>
       </div>
       <div class="stats">
   <div><strong>300+</strong><span>Portraits</span></div>

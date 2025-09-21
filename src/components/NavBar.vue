@@ -1,7 +1,7 @@
 <template>
   <header :class="['nav', { scrolled }]">
     <div class="container nav-inner">
-      <RouterLink class="brand" :to="{ name: 'home' }" aria-label="Home" title="Home — Timeless Treasures">Timeless Treasures</RouterLink>
+  <RouterLink class="brand" :to="{ name: 'home' }" aria-label="Home" title="Home — Timeless Touch Boudoir">Timeless Touch Boudoir</RouterLink>
 
       <!-- Mobile hamburger (shown on small screens) -->
       <button type="button" class="burger" @click="toggleMenu" :aria-expanded="menuOpen.toString()" aria-controls="mobile-menu" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
       <button type="button" class="mobile-close" @click="closeMenu" aria-label="Close menu">×</button>
       <nav class="mobile-links">
         <RouterLink class="mobile-brand" :to="{ name: 'home' }" @click="closeMenu" aria-label="Home">
-          <img src="/tt-logo.svg" alt="Timeless Treasures" />
+          <img src="/tt-logo.svg" alt="Timeless Touch Boudoir" />
         </RouterLink>
         <RouterLink to="/services" @click="closeMenu">Services</RouterLink>
         <RouterLink to="/locations/cincinnati" @click="closeMenu">Cincinnati</RouterLink>

@@ -2,7 +2,7 @@
   <section class="hero" ref="sectionRef">
     <div class="hero-bg" v-show="visible" :style="bgStyle"></div>
     <div class="container hero-content">
-  <h1 class="hero-title">Cincinnati Boudoir Photography — Timeless Treasures</h1>
+  <h1 class="hero-title">Cincinnati Boudoir Photography — Timeless Touch Boudoir</h1>
       <p class="hero-sub">Elegant, empowering boudoir sessions in Cincinnati—signature, couples, and bridal.</p>
       <div class="cta">
   <RouterLink class="btn" :to="{ name: 'services-boudoir-experience' }">View Services</RouterLink>

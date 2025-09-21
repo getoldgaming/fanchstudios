@@ -3,17 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Timeless Treasures</title>
+  <title>Timeless Touch Boudoir</title>
     <meta http-equiv="refresh" content="0; url=./index.html" />
     <script>
-      // If GitHub Pages serves 404 for a deep link, send user back to index and let SPA router handle it
-      // Preserve path after the base '/fanchstudios/' so Vue Router can match it
+      // For SPA on GitHub Pages / custom domain, redirect to index and let the router handle the path
       (function(){
         var l = window.location;
-        if (l.pathname.indexOf('/fanchstudios/') === 0) {
-          var path = l.pathname.replace('/fanchstudios/', '/');
-          sessionStorage.setItem('gh:orig-path', path + l.search + l.hash);
-        }
+        sessionStorage.setItem('gh:orig-path', l.pathname + l.search + l.hash);
       })();
     </script>
   </head>

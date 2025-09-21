@@ -1,6 +1,6 @@
 <template>
   <section class="container about-page">
-    <h1 class="hero-title">About Timeless Treasures</h1>
+  <h1 class="hero-title">About Timeless Touch Boudoir</h1>
     <p class="hero-sub">We create intimate, empowering boudoir imagery in Cincinnati that celebrates confidence, individuality, and timeless style. Our approach is collaborative, body‑positive, and focused on making every client feel comfortable and radiant.</p>
 
     <div class="about-inner">

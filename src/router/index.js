@@ -29,7 +29,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/fanchstudios/'),
+  history: createWebHistory('/'),
   routes,
   scrollBehavior (to, from, savedPosition) {
     // If there is a saved position (back/forward navigation), animate to it.
